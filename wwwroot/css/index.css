@@ -1,5 +1,5 @@
 body { }
-.hero-section { background-image:url('../images/MeetingInProgressGrad.png'); background-repeat:no-repeat; background-position:top right; background-size:contain; }
+.hero-section { background-image:url('https://raw.githubusercontent.com/cerebralops-sys/CerebralOps/master/images/MeetingInProgressGrad.png'); background-repeat:no-repeat; background-position:top right; background-size:contain; }
 .stats-section{padding:5rem 0;background:var(--dark-bg);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)}
 .stat-card{padding:2rem;text-align:center}.stat-number{font-size:4rem;font-weight:900;color:var(--primary-color);margin-bottom:.5rem}.stat-label{font-size:1.1rem;color:var(--text-gray);margin:0}
 .whoweserve-section{padding-top:6rem;padding-bottom:6rem}.philosophy-section{padding:6rem 0}.about-section{padding:6rem 0}.contact-section{padding:6rem 0}
