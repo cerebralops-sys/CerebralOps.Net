@@ -1,4 +1,4 @@
-name: .NET Build
+name: .NET Build and Publish
 
 on:
   push:
@@ -16,3 +16,11 @@ jobs:
           dotnet-version: '8.0.x'
       - run: dotnet restore
       - run: dotnet build --configuration Release --no-restore
+      - run: dotnet publish --configuration Release --no-build --output ./publish
+      - name: Package published site
+        run: zip -r CerebralOps-Net-publish.zip publish
+      - name: Upload deployment package
+        uses: actions/upload-artifact@v4
+        with:
+          name: CerebralOps-Net-publish
+          path: CerebralOps-Net-publish.zip
