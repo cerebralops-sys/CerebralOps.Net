@@ -14,6 +14,30 @@ jobs:
       - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.0.x'
+
+      - name: Restore website images
+        shell: bash
+        run: |
+          set -e
+          mkdir -p wwwroot/images/clients
+          base="https://raw.githubusercontent.com/cerebralops-sys/CerebralOps/master/images"
+          curl -fL "$base/CerebralOpsLogo384x128.png" -o wwwroot/images/CerebralOpsLogo384x128.png
+          curl -fL "$base/CerebralOpsLogoDark294x118.png" -o wwwroot/images/CerebralOpsLogoDark294x118.png
+          curl -fL "$base/ClientinConstruction.png" -o wwwroot/images/ClientinConstruction.png
+          curl -fL "$base/Deep_Founder_CerebralOps.png" -o wwwroot/images/Deep_Founder_CerebralOps.png
+          curl -fL "$base/MeetingInProgress.png" -o wwwroot/images/MeetingInProgress.png
+          curl -fL "$base/MeetingInProgressGrad.png" -o wwwroot/images/MeetingInProgressGrad.png
+          curl -fL "$base/RevOpsAudit.png" -o wwwroot/images/RevOpsAudit.png
+          curl -fL "$base/choosing-matters-meeting.jpg" -o wwwroot/images/choosing-matters-meeting.jpg
+          curl -fL "$base/fujikuwa.png" -o wwwroot/images/fujikuwa.png
+          curl -fL "$base/whoweserveherograd.jpg" -o wwwroot/images/whoweserveherograd.jpg
+          curl -fL "$base/clients/AlpineFashions.png" -o wwwroot/images/clients/AlpineFashions.png
+          curl -fL "$base/clients/LPHYoga.png" -o wwwroot/images/clients/LPHYoga.png
+          curl -fL "$base/clients/LandAmerica.png" -o wwwroot/images/clients/LandAmerica.png
+          curl -fL "$base/clients/NUSConsultingGroup.png" -o wwwroot/images/clients/NUSConsultingGroup.png
+          curl -fL "$base/clients/PioneerDataSystems.png" -o wwwroot/images/clients/PioneerDataSystems.png
+          curl -fL "$base/clients/dominionpower.png" -o wwwroot/images/clients/dominionpower.png
+
       - run: dotnet restore
       - run: dotnet build --configuration Release --no-restore
       - run: dotnet publish --configuration Release --no-build --output ./publish
