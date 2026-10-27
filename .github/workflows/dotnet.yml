@@ -66,5 +66,7 @@ jobs:
           } else {
             $msdeployPath = $msdeploy.Source
           }
+          $publishPath = (Resolve-Path ./publish).Path
+          $source = "-source:contentPath=$publishPath"
           $destination = "-dest:auto,computerName=https://cerebralops.in:8172/msdeploy.axd?site=cerebralops.in,userName=cerebral,password=$($env:PLESK_DEPLOY_PASSWORD),authType=Basic"
-          & $msdeployPath -verb:sync -source:contentPath=./publish $destination -allowUntrusted -enableRule:AppOffline
+          & $msdeployPath -verb:sync $source $destination -allowUntrusted -enableRule:AppOffline
