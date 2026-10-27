@@ -34,7 +34,7 @@ jobs:
           curl -fL "$base/clients/LPHYoga.png" -o wwwroot/images/clients/LPHYoga.png
           curl -fL "$base/clients/LandAmerica.png" -o wwwroot/images/clients/LandAmerica.png
           curl -fL "$base/clients/NUSConsultingGroup.png" -o wwwroot/images/clients/NUSConsultingGroup.png
-          curl -fL "$base/clients/PioneerDataSystems.png" -o wwwroot/images/clients/clients/PioneerDataSystems.png
+          curl -fL "$base/clients/PioneerDataSystems.png" -o wwwroot/images/clients/PioneerDataSystems.png
           curl -fL "$base/clients/dominionpower.png" -o wwwroot/images/clients/dominionpower.png
       - name: Restore dependencies
         run: dotnet restore
