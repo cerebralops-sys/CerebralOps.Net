@@ -68,5 +68,7 @@ jobs:
           }
           $publishPath = (Resolve-Path ./publish).Path
           $source = "-source:contentPath=$publishPath"
-          $destination = "-dest:auto,computerName=https://cerebralops.in:8172/msdeploy.axd?site=cerebralops.in,userName=cerebral,password=$env:PLESK_DEPLOY_PASSWORD,authType=Basic"
-          & $msdeployPath '-verb:sync' $source $destination '-allowUntrusted' '-enableRule:AppOffline'
+          $destination = '-dest:auto,computerName=https://cerebralops.in:8172/msdeploy.axd?site=cerebralops.in,userName=cerebral,password=' + $env:PLESK_DEPLOY_PASSWORD + ',authType=Basic'
+          $arguments = @('-verb:sync', $source, $destination, '-allowUntrusted', '-enableRule:AppOffline')
+          $process = Start-Process -FilePath $msdeployPath -ArgumentList $arguments -Wait -NoNewWindow -PassThru
+          if ($process.ExitCode -ne 0) { throw "msdeploy failed with exit code $($process.ExitCode)." }
