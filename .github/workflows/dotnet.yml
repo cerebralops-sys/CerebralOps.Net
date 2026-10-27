@@ -34,7 +34,7 @@ jobs:
           curl -fL "$base/clients/LPHYoga.png" -o wwwroot/images/clients/LPHYoga.png
           curl -fL "$base/clients/LandAmerica.png" -o wwwroot/images/clients/LandAmerica.png
           curl -fL "$base/clients/NUSConsultingGroup.png" -o wwwroot/images/clients/NUSConsultingGroup.png
-          curl -fL "$base/clients/PioneerDataSystems.png" -o wwwroot/images/clients/PioneerDataSystems.png
+          curl -fL "$base/clients/PioneerDataSystems.png" -o wwwroot/images/clients/clients/PioneerDataSystems.png
           curl -fL "$base/clients/dominionpower.png" -o wwwroot/images/clients/dominionpower.png
       - name: Restore dependencies
         run: dotnet restore
@@ -68,5 +68,5 @@ jobs:
           }
           $publishPath = (Resolve-Path ./publish).Path
           $source = "-source:contentPath=$publishPath"
-          $destination = "-dest:auto,computerName=https://cerebralops.in:8172/msdeploy.axd?site=cerebralops.in,userName=cerebral,password=$($env:PLESK_DEPLOY_PASSWORD),authType=Basic"
-          & $msdeployPath -verb:sync $source $destination -allowUntrusted -enableRule:AppOffline
+          $destination = '-dest:auto,computerName=https://cerebralops.in:8172/msdeploy.axd?site=cerebralops.in,userName=cerebral,password="' + $env:PLESK_DEPLOY_PASSWORD + '",authType=Basic'
+          & $msdeployPath '-verb:sync' $source $destination '-allowUntrusted' '-enableRule:AppOffline'
